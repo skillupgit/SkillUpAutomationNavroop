@@ -10,7 +10,7 @@ public class ProfileAndPreferences extends BaseTest{
     @Test
     public void changeUserName() throws InterruptedException {
         //Login with valid credentials
-        navigateToUrl();
+        //navigateToUrl();
         loginKoelApp();
         //click on profile icon
         clickOnProfileIcon();

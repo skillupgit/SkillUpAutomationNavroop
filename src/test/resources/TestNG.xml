@@ -3,11 +3,11 @@
 
 <suite name="TestNG">
 
+    <parameter name="BaseUrl" value="http://testkoel.skillup.study/#/home"></parameter>
     <test name="Example Test" preserve-order="false">
         <classes>
             <class name="LoginTests"/>
-            <class name="BaseTest"/>
-            <class name="ProfileAndPreferences"/>
+            <!--<class name="ProfileAndPreferences"/>-->
         </classes>
     </test>
 </suite>

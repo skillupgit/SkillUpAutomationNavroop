@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -20,6 +21,8 @@ public class BaseTest {
     public WebDriverWait wait;
 
     public FluentWait<WebDriver> fluentWait;
+
+    public Actions actions;
 
     //public String url = "http://testkoel.skillup.study/#/home";
 
@@ -43,6 +46,7 @@ public class BaseTest {
         fluentWait = new FluentWait<WebDriver>(driver)
                 .withTimeout(Duration.ofSeconds(5))
                 .pollingEvery(Duration.ofMillis(500));
+        actions = new Actions(driver);
         navigateToUrl(url);
     }
 

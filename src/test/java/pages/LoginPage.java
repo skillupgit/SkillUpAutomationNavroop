@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class LoginPage extends BasePage{
 
@@ -10,6 +11,9 @@ public class LoginPage extends BasePage{
     public LoginPage(WebDriver givenDriver) {
         super(givenDriver);
     }
+
+
+    //Selenium By Class Locators start here//
 
     //Email Field
     By emailField = By.xpath("//input[@type='email']");
@@ -47,6 +51,7 @@ public class LoginPage extends BasePage{
     public WebElement getForgotPasswordLink(){
         return findElement(forgotPasswordLink);
     }
+
 
 
 }

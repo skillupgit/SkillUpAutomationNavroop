@@ -9,7 +9,7 @@ public class HomePage extends BasePage{
         super(givenDriver);
     }
 
-    By profileIcon = By.xpath("//a[@data-testid='view-profile-links']");
+    By profileIcon = By.xpath("//a[@data-testid='view-profile-link']");
 
     //Helper Methods
 

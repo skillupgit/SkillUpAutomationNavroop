@@ -3,6 +3,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pageFactory.LoginPageFactory;
 import pages.HomePage;
 import pages.LoginPage;
 
@@ -25,6 +26,18 @@ public class LoginTests extends BaseTest {
         loginPage.provideEmail("student@skillup.study");
         loginPage.providePassword("Intern$hip001");
         loginPage.clickLogin();
+        Assert.assertTrue(homePage.getProfileIcon().isDisplayed());
+    }
+
+    //Same Test as Above the only difference is the page factory is used.
+    @Test
+    public void loginValidEmailPasswordUsingPageFactory(){
+        LoginPageFactory loginPageFactory = new LoginPageFactory(driver);
+        HomePage homePage = new HomePage(driver);
+        //Test Steps
+        loginPageFactory.provideEmailUsingElement("student@skillup.study")
+                .providePasswordUsingElement("Intern$hip001")
+                .clickLoginUsingElement();
         Assert.assertTrue(homePage.getProfileIcon().isDisplayed());
     }
 

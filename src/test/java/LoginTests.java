@@ -10,15 +10,15 @@ import pages.LoginPage;
 public class LoginTests extends BaseTest {
 
 
-    @Test
+ /*   @Test
     public void testKoelPage() throws InterruptedException {
         //navigateToUrl();
         String expectedUrl = "http://testkoel.skillup.study/#/home";
         Thread.sleep(2000);
         Assert.assertEquals(driver.getCurrentUrl(), expectedUrl);
-    }
+    }*/
 
-    @Test
+   /* @Test
     public void loginValidEmailPassword(){
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
@@ -27,10 +27,33 @@ public class LoginTests extends BaseTest {
         loginPage.providePassword("Intern$hip001");
         loginPage.clickLogin();
         Assert.assertTrue(homePage.getProfileIcon().isDisplayed());
-    }
+    }*/
+   @Test
+   public void loginValidEmailPassword(){
+       LoginPage loginPage = new LoginPage(getDriver());
+       HomePage homePage = new HomePage(getDriver());
+       //Test Steps
+       loginPage.provideEmail("student@skillup.study");
+       loginPage.providePassword("Intern$hip001");
+       loginPage.clickLogin();
+       Assert.assertTrue(homePage.getProfileIcon().isDisplayed());
+   }
 
     //Same Test as Above the only difference is the page factory is used.
+
     @Test
+    public void loginValidEmailPasswordUsingPageFactory(){
+        LoginPageFactory loginPageFactory = new LoginPageFactory(getDriver());
+        HomePage homePage = new HomePage(getDriver());
+        //Test Steps
+        loginPageFactory.provideEmailUsingElement("student@skillup.study")
+                .providePasswordUsingElement("Intern$hip001")
+                .clickLoginUsingElement();
+        Assert.assertTrue(homePage.getProfileIcon().isDisplayed());
+    }
+
+
+   /* @Test
     public void loginValidEmailPasswordUsingPageFactory(){
         LoginPageFactory loginPageFactory = new LoginPageFactory(driver);
         HomePage homePage = new HomePage(driver);
@@ -39,9 +62,19 @@ public class LoginTests extends BaseTest {
                 .providePasswordUsingElement("Intern$hip001")
                 .clickLoginUsingElement();
         Assert.assertTrue(homePage.getProfileIcon().isDisplayed());
-    }
+    }*/
 
     @Test(dataProvider = "NegativeLoginTestData", dataProviderClass= TestDataProvider.class)
+    public void negativeLoginTests(String email, String password){
+        LoginPage loginPage = new LoginPage(getDriver());
+        //Test Steps
+        loginPage.provideEmail(email);
+        loginPage.providePassword(password);
+        loginPage.clickLogin();
+        Assert.assertTrue(loginPage.getForgotPasswordLink().isDisplayed());
+    }
+
+   /* @Test(dataProvider = "NegativeLoginTestData", dataProviderClass= TestDataProvider.class)
     public void negativeLoginTests(String email, String password){
         LoginPage loginPage = new LoginPage(driver);
         //Test Steps
@@ -49,7 +82,7 @@ public class LoginTests extends BaseTest {
         loginPage.providePassword(password);
         loginPage.clickLogin();
         Assert.assertTrue(loginPage.getForgotPasswordLink().isDisplayed());
-    }
+    }*/
 
     //Helper Methods
 

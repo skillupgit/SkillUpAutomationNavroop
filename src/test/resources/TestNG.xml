@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="TestNG">
+<suite name="TestNG" parallel = "methods" thread-count="4">
 
+    <parameter name="baseURL" value="http://testkoel.skillup.study/#home/"></parameter>
     <test name="Example Test" preserve-order="false">
         <classes>
-            <class name="LoginTests"/>
-            <class name="BaseTest"/>
+            <!--<class name="LoginTest"/>-->
+           <!-- <class name ="HomeTests"/>-->
+            <!--<class name="ProfilePageTests"/>-->
+            <!--<class name="ProfilePageTests"/>-->
+
+            <class name="stepDefinition.CucumberRunner"/>
         </classes>
     </test>
 </suite>
+

@@ -1,0 +1,59 @@
+package pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class LoginPage extends BasePage {
+//constructor
+    public LoginPage(WebDriver givenDriver) {
+        super(givenDriver);
+    }
+
+    //elements
+//enter valid email field
+    By emailField = By.xpath("//input[@type='email']");
+
+    //enter valid password
+    By passwordField = By.xpath("//input[@type='password']");
+
+    //Login button
+    By loginBtn = By.xpath("//button[@type='submit']");
+
+    //forgot password button
+    By forgetpasswordBtn =By.xpath("//a[@role='button']");
+
+
+
+
+    //helper methods
+    public void provideEmail(String email) {
+        findElement(emailField).clear();
+        findElement(emailField).sendKeys(email);
+    }
+
+    public void providePassword(String password) {
+        findElement(passwordField).clear();
+        findElement(passwordField).sendKeys(password);
+    }
+
+    public void clickLoginBtn() {
+        findElement(loginBtn).click();
+    }
+
+    public WebElement getforgetPasswordBtn() {
+        return findElement((forgetpasswordBtn));
+
+
+    }
+
+    public void loginToAppWithvalidEmail() throws InterruptedException {
+
+        //enter valid email address
+        provideEmail("student@skillup.study");
+        //enter valid password
+        providePassword("Intern$hip001");
+        //click submit button
+        clickLoginBtn();
+    }
+}
